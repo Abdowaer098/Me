@@ -791,9 +791,10 @@ button:focus-visible {
 /* Mobile-first adjustments for max-width 600px */
 @media (max-width: 600px) {
     html, body {
-        font-size: 1.15rem; /* Golden ratio base for mobile */
+        font-size: 1.08rem;
         min-width: 0;
         overflow-x: hidden;
+        scroll-behavior: smooth;
     }
     #main-content-display {
         padding-top: 0.5rem;
@@ -805,18 +806,24 @@ button:focus-visible {
     .carousel-slide {
         padding: 0.7rem 0.3rem;
         min-height: unset;
-        font-size: 1.15rem;
+        font-size: 1.08rem;
         overflow-y: visible;
+        transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .carousel-slide.active-slide {
+        opacity: 1;
+        transform: translateY(0);
+        transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .phase2-header h1 {
-        font-size: 1.6rem;
+        font-size: 1.35rem;
         flex-wrap: wrap;
     }
     .phase2-header .education-text {
-        font-size: 1.05rem;
+        font-size: 0.95rem;
     }
     .section-title {
-        font-size: 1.25rem;
+        font-size: 1.1rem;
         margin-bottom: 1rem;
         padding-bottom: 0.5rem;
     }
@@ -826,16 +833,17 @@ button:focus-visible {
     }
     .achievement-card, .skill-card {
         padding: 0.7rem 0.5rem;
-        font-size: 1.1rem;
+        font-size: 1.02rem;
+        transition: box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .card-title {
-        font-size: 1.15rem;
+        font-size: 1.12rem;
     }
     .card-subtitle {
-        font-size: 0.95rem;
+        font-size: 0.88rem;
     }
     .motivation-text {
-        font-size: 1.1rem;
+        font-size: 1.01rem;
     }
     #bottom-main-nav {
         left: 0;
@@ -845,10 +853,12 @@ button:focus-visible {
         border-radius: 0;
         padding: 0 2px;
         min-width: 0;
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .bottom-nav-link {
         width: 32px;
         height: 32px;
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .bottom-nav-link .nav-link-label {
         font-size: 0.7rem;
@@ -870,9 +880,11 @@ button:focus-visible {
         background: rgba(10, 15, 31, 0.98);
         transform: translateY(-50%);
         z-index: 1200;
+        transition: right 0.5s cubic-bezier(0.4, 0, 0.2, 1), top 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .contact-panel-icon {
         font-size: 1.5rem;
+        transition: color 0.4s cubic-bezier(0.4, 0, 0.2, 1), transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
     #aw-logo {
         top: 0.5rem;
@@ -882,10 +894,13 @@ button:focus-visible {
     #loading-overlay {
         font-size: 0.9rem;
     }
-    /* Enable vertical scroll for main content */
     #phase2-content-wrapper {
         overflow-y: auto;
         max-height: 100vh;
+    }
+    /* Smoother transitions for summary words */
+    .summary-word {
+        transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 }
 /* ...existing code... */

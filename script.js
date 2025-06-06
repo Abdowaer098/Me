@@ -343,6 +343,13 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     currentSlide = slideIndex;
     updateCarouselControls();
+    // Always scroll to top on mobile for all sections
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Additional scroll reset for the content wrapper
+    const phase2Wrapper = document.getElementById('phase2-content-wrapper');
+    if (phase2Wrapper) {
+      phase2Wrapper.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   }
 
   bottomNavLinks.forEach((link) => {
