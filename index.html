@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abdelrahman Waer - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@400;500;700;900&family=Raleway:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Add preconnect for external resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Add preload for critical resources -->
+    <link rel="preload" href="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" as="script">
+    <link rel="preload" href="style.css" as="style">
+</head>
+
+<body class="antialiased">
+
+    <div id="loading-overlay">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <div id="particle-bg" data-particle-count="25"></div>
+
+    <div id="monogram-container">
+        <div id="monogram-interaction-area">
+            <span id="initial-w-char">W</span>
+            <div id="intro-text-container">
+                <span class="intro-gradient-text">Curious? 🤔✨</span>
+            </div>
+        </div>
+    </div>
+
+    <div id="artifact-sentence" class="intro-sentence">"Imagine a programmer who treats their work as a precious
+        artifact, safeguarding it with the vigilance of a digital sentinel."</div>
+    <div id="waer-reveal-text" class="intro-sentence">WAER.</div>
+
+    <div id="aw-logo">AW</div>
+
+    <div id="phase2-content-wrapper">
+        <div id="main-content-display">
+            <div class="carousel-track">
+                <section id="summary-section" class="carousel-slide active-slide">
+                    <header class="phase2-header">
+                        <h1>
+                            <span class="name-part gradient-name">Abdelrahman</span>
+                            <span class="name-part"><span class="waer-w">W</span>aer</span>
+                        </h1>
+                        <p class="education-text">Bachelor of Artificial Intelligence – Cyber Security Track<br>Delta
+                            University |
+                            2024 – Expected Graduation: 2027</p>
+                    </header>
+                    <main id="professional-summary-text" class="phase2-summary">
+                    </main>
+                </section>
+
+                <section id="experience-section" class="carousel-slide">
+                    <h2 class="section-title">Work Experience</h2>
+                    <div class="card-container">
+                        <div class="achievement-card">
+                            <h3 class="card-title">Penetration Tester</h3>
+                            <p class="card-subtitle">Slovesta | 2025 - Present</p>
+                            <ul class="card-details">
+                                <li>Conducting comprehensive penetration tests on web and network systems. </li>
+                                <li>Documenting security flaws and providing remediation strategies. </li>
+                                <li>Collaborating with development teams to enhance product security. </li>
+                            </ul>
+                        </div>
+                        <div class="achievement-card">
+                            <h3 class="card-title">Cybersecurity Instructor (Voluntary)</h3>
+                            <p class="card-subtitle">Digital Mind (Team Leader) | 2025 - Present</p>
+                            <ul class="card-details">
+                                <li>Teaching ethical hacking, web security, and network penetration testing. </li>
+                                <li>Conducting hands-on training sessions and mentoring students in CTFs. </li>
+                                <li>Designing cybersecurity labs and contributing to course development. </li>
+                            </ul>
+                        </div>
+                        <div class="achievement-card">
+                            <h3 class="card-title">DEPI Trainee - .NET Track Graduate</h3>
+                            <p class="card-subtitle">Digital Egypt Pioneers Initiative (DEPI) | 2025</p>
+                            <ul class="card-details">
+                                <li>Specialized in .NET Full-Stack Web Development using C#, ASP.NET, and SQL Server.
+                                </li>
+                                <li>Built a full Hospital Management System as part of the final project. </li>
+                                <li>Gained experience in agile teamwork, software architecture, and UI/UX development.
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="achievement-card">
+                            <h3 class="card-title">Cybersecurity Intern</h3>
+                            <p class="card-subtitle">Egyptian Agricultural Bank - Egypt | August 2024</p>
+                            <ul class="card-details">
+                                <li>Assisted in securing IT infrastructure and identifying network vulnerabilities.
+                                </li>
+                                <li>Conducted penetration tests on web applications. </li>
+                            </ul>
+                        </div>
+                        <div class="achievement-card">
+                            <h3 class="card-title">Freelance Penetration Tester & Bug Bounty Hunter</h3>
+                            <p class="card-subtitle">June 2024 - Present</p>
+                            <ul class="card-details">
+                                <li>Performed web and network penetration testing to uncover critical risks. </li>
+                                <li>Participated in bug bounty programs, identifying and reporting vulnerabilities.
+                                </li>
+                                <li>Developed Waer's BugHunter, a custom tool for automated vulnerability scanning.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="projects-section" class="carousel-slide">
+                    <h2 class="section-title">Projects</h2>
+                    <div class="card-container">
+                        <div class="achievement-card">
+                            <h3 class="card-title">IoT Attendance System</h3>
+                            <p class="card-subtitle">Digital Mind | 2024</p>
+                            <ul class="card-details">
+                                <li>Strengthened system integrity via penetration tests, identifying vulnerabilities
+                                    like insecure
+                                    session management and CSRF. </li>
+                                <li>Developed practical skills in vulnerability assessment and proposed countermeasures
+                                    tailored for
+                                    IoT environments. </li>
+                                <li>Benefited from experience in recommending architectural changes to bolster system
+                                    security.
+                                </li>
+                                <li>Worked within a team to integrate secure solutions. </li>
+                            </ul>
+                        </div>
+                        <div class="achievement-card">
+                            <h3 class="card-title">Hospital Management System (.NET)</h3>
+                            <p class="card-subtitle">DEPI Final Project | 2025</p>
+                            <ul class="card-details">
+                                <li>Developed a fully functional web-based hospital system using ASP.NET and SQL Server.
+                                </li>
+                                <li>Features include patient records, appointments, dashboards, admin panels, and user
+                                    role
+                                    segregation. </li>
+                                <li>Integrated secure login systems and validation for medical records. </li>
+                                <li>Applied clean architecture principles and followed agile methodologies. </li>
+                            </ul>
+                        </div>
+                        <div class="achievement-card">
+                            <h3 class="card-title">Independent Projects</h3>
+                            <ul class="card-details">
+                                <li><b>Arduino-based Firefighting Robot:</b> A self-driving system that detects and
+                                    extinguishes
+                                    fire. </li>
+                                <li><b>Driver Drowsiness Detection System:</b> An eye-tracking solution using a camera
+                                    to prevent
+                                    road accidents. </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="skills-section" class="carousel-slide">
+                    <h2 class="section-title">Skills & Expertise</h2>
+                    <div class="card-container-grid">
+                        <div class="skill-card">
+                            <h3 class="card-title">Cybersecurity & Hacking</h3>
+                            <ul class="card-details">
+                                <li>Web and Network Penetration Testing</li>
+                                <li>Bug Bounty Hunting & Vulnerability Assessment</li>
+                                <li>IoT & Embedded System Security</li>
+                            </ul>
+                        </div>
+                        <div class="skill-card">
+                            <h3 class="card-title">Programming & Development</h3>
+                            <ul class="card-details">
+                                <li>C#, ASP.NET Core, SQL Server</li>
+                                <li>Python, Java, JavaScript</li>
+                                <li>Bash & PowerShell scripting</li>
+                            </ul>
+                        </div>
+                        <div class="skill-card">
+                            <h3 class="card-title">Tools & Technologies</h3>
+                            <ul class="card-details">
+                                <li>Burp Suite, Metasploit, Wireshark, Nmap</li>
+                                <li>SQLMap, XSS Strike, Custom Scripts</li>
+                                <li>Linux/Windows Administration</li>
+                                <li>Git, Docker (basic)</li>
+                            </ul>
+                        </div>
+                        <div class="skill-card">
+                            <h3 class="card-title">Soft Skills</h3>
+                            <ul class="card-details">
+                                <li>Strong Analytical & Problem-Solving</li>
+                                <li>Team Collaboration & Leadership</li>
+                                <li>Communication & Knowledge Sharing</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="education-certs-section" class="carousel-slide">
+                    <h2 class="section-title">Education & Certifications</h2>
+                    <div class="card-container">
+                        <div class="achievement-card">
+                            <h3 class="card-title">Bachelor of Artificial Intelligence</h3>
+                            <p class="card-subtitle">Cyber Security Track | Delta University | Expected Graduation: 2027
+                            </p>
+                        </div>
+                        <div class="achievement-card">
+                            <h3 class="card-title">Certifications & Courses</h3>
+                            <ul class="card-details">
+                                <li>ISC2 Certified in Cybersecurity (CC)</li>
+                                <li>CompTIA A+ & Network+</li>
+                                <li>TCM Security Practical Bug Bounty Course(11 Hours)</li>
+                                <li>TCM Security Ethical Hacking Course(9 Hours)</li>
+                                <li>Station X Ethical Hacking Bundle (In Progress)</li>
+                                <li>Advanced Bugbounty Secrets(Udemy)(50 Hours)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="activities-section" class="carousel-slide">
+                    <h2 class="section-title">Competitions & Activities</h2>
+                    <div class="card-container">
+                        <div class="achievement-card">
+                            <h3 class="card-title">Capture The Flag (CTF) Competitor</h3>
+                            <p class="card-subtitle">EG-CERT National CTF Competition | 2025</p>
+                            <ul class="card-details">
+                                <li>Scored 911 points in a national CTF organized by EG-CERT. </li>
+                                <li>Solved challenges in web exploitation, reverse engineering, forensics, cryptography,
+                                    and network
+                                    attacks. </li>
+                            </ul>
+                        </div>
+                        <div class="achievement-card">
+                            <h3 class="card-title">VEX Robotics National Competition</h3>
+                            <p class="card-subtitle">Egypt | 2019</p>
+                            <ul class="card-details">
+                                <li>Achieved 1st place nationally in the VEX Robotics Competition. </li>
+                                <li>Programmed a competition robot with advanced autonomous behavior using sensors and
+                                    microcontrollers. </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="goals-learning-section" class="carousel-slide">
+                    <h2 class="section-title">Goals & Learning Focus</h2>
+                    <div class="card-container">
+                        <div class="achievement-card">
+                            <h3 class="card-title">Current Learning & In-Progress Projects</h3>
+                            <ul class="card-details">
+                                <li><b>OSCP Labs:</b> Buffer overflows, privesc, AD</li>
+                                <li><b>Cloud Security:</b> IAM, S3, SSRF</li>
+                                <li><b>Red Team Tactics:</b> Cobalt Strike, Sliver</li>
+                                <li><b>Advanced Web Attacks:</b> DOM-XSS, logic bypass, prototype pollution</li>
+                            </ul>
+                        </div>
+                        <div class="achievement-card">
+                            <h3 class="card-title">Future Goals</h3>
+                            <ul class="card-details">
+                                <li>Earn OSCP</li>
+                                <li>Build strong Red Team/bug bounty portfolio</li>
+                                <li>Contribute to community</li>
+                                <li>Master advanced offensive security</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="drives-me-section" class="carousel-slide">
+                    <h2 class="section-title">What Drives Me</h2>
+                    <div class="card-container">
+                        <div class="achievement-card large-card">
+                            <p class="motivation-text">
+                                "Cybersecurity is not just a career—it's a passion. I thrive on breaking into systems
+                                ethically,
+                                thinking like an adversary, and helping organizations fix the cracks before real threats
+                                exploit
+                                them. I'm committed to continuous improvement, learning, and becoming a trusted Red Team
+                                operator
+                                who helps secure the digital world."
+                            </p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <nav id="bottom-main-nav">
+            <div class="bottom-nav-links">
+                <a href="#summary-section" data-index="0" class="bottom-nav-link active">
+                    <i data-lucide="user" class="nav-icon"></i>
+                    <span class="nav-link-label">Summary</span>
+                </a>
+                <a href="#experience-section" data-index="1" class="bottom-nav-link">
+                    <i data-lucide="briefcase" class="nav-icon"></i>
+                    <span class="nav-link-label">Experience</span>
+                </a>
+                <a href="#projects-section" data-index="2" class="bottom-nav-link">
+                    <i data-lucide="layout-grid" class="nav-icon"></i>
+                    <span class="nav-link-label">Projects</span>
+                </a>
+                <a href="#skills-section" data-index="3" class="bottom-nav-link">
+                    <i data-lucide="sliders-horizontal" class="nav-icon"></i>
+                    <span class="nav-link-label">Skills</span>
+                </a>
+                <a href="#education-certs-section" data-index="4" class="bottom-nav-link">
+                    <i data-lucide="graduation-cap" class="nav-icon"></i>
+                    <span class="nav-link-label">Education</span>
+                </a>
+                <a href="#activities-section" data-index="5" class="bottom-nav-link">
+                    <i data-lucide="award" class="nav-icon"></i>
+                    <span class="nav-link-label">Activities</span>
+                </a>
+                <a href="#goals-learning-section" data-index="6" class="bottom-nav-link">
+                    <i data-lucide="target" class="nav-icon"></i>
+                    <span class="nav-link-label">Goals</span>
+                </a>
+                <a href="#drives-me-section" data-index="7" class="bottom-nav-link">
+                    <i data-lucide="sparkles" class="nav-icon"></i>
+                    <span class="nav-link-label">Motivation</span>
+                </a>
+            </div>
+            <div class="nav-indicator"></div>
+        </nav>
+
+        <aside id="right-contact-panel" aria-label="Contact links">
+            <a href="https://linkedin.com/in/abdelrahman-waer-a356802b5/" target="_blank" rel="noopener noreferrer"
+                class="contact-panel-icon" aria-label="Connect on LinkedIn">
+                <i data-lucide="linkedin"></i>
+            </a>
+            <a href="mailto:abdowaer099@gmail.com" class="contact-panel-icon" aria-label="Email">
+                <i data-lucide="mail"></i>
+            </a>
+            <a href="tel:01211890098" class="contact-panel-icon" aria-label="Phone">
+                <i data-lucide="phone"></i>
+            </a>
+        </aside>
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
