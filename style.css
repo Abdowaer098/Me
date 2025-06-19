@@ -16,7 +16,6 @@
     --card-hover-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.4);
     --nav-bg: rgba(5, 8, 13, 0.95);
     --nav-blur: 12px;
-    /* Added for rgba glow */
 }
 
 body {
@@ -26,11 +25,9 @@ body {
     overflow: hidden;
     margin: 0;
     display: flex;
-    flex-direction: column;
     min-height: 100vh;
 }
 
-/* Initial Monogram & Intro Text Styling */
 #monogram-container {
     position: fixed;
     top: 0;
@@ -249,12 +246,10 @@ body {
     transform: scale(1) translateY(0);
 }
 
-/* Main Content Wrapper (Phase 2) */
 #phase2-content-wrapper {
     display: none;
     opacity: 0;
     width: 100%;
-    min-height: 100vh;
     flex-direction: column;
     transition: opacity 0.7s ease-in-out;
     position: relative;
@@ -268,16 +263,13 @@ body {
 #main-content-display {
     flex-grow: 1;
     overflow-x: hidden;
-    overflow-y: auto;
     position: relative;
-    padding-top: 2rem;
-    padding-bottom: 120px;
     height: calc(100vh - 80px);
 }
 
 .carousel-track {
     display: flex;
-    height: 100%;
+    height: 96%;
     transition: transform 0.7s cubic-bezier(0.65, 0, 0.35, 1);
 }
 
@@ -297,13 +289,11 @@ body {
     scrollbar-color: var(--primary-blue) transparent;
 }
 
-/* Enhanced Gradient Scrollbar Styling */
 .carousel-slide {
     scrollbar-width: thin;
     scrollbar-color: var(--primary-blue) transparent;
 }
 
-/* Custom scrollbar for webkit browsers */
 .carousel-slide::-webkit-scrollbar {
     width: 10px;
 }
@@ -352,13 +342,11 @@ body {
     }
 }
 
-/* Firefox scrollbar styling */
 .carousel-slide {
     scrollbar-width: thin;
     scrollbar-color: var(--primary-blue) transparent;
 }
 
-/* Add glow effect to scrollbar */
 .carousel-slide::-webkit-scrollbar-thumb {
     box-shadow:
         0 0 10px rgba(59, 130, 246, 0.5),
@@ -379,7 +367,6 @@ body {
 .phase2-header {
     text-align: center;
     margin-bottom: 2.5rem;
-    width: 100%;
 }
 
 .phase2-header .name-part {
@@ -495,7 +482,6 @@ body {
 }
 
 
-/* Bottom Navigation Bar - Updated Styling */
 #bottom-main-nav {
     display: flex;
     justify-content: center;
@@ -559,7 +545,6 @@ body {
     transform: scale(1.1);
 }
 
-/* Silver background for active icon */
 .bottom-nav-link.active::before {
     content: '';
     position: absolute;
@@ -579,7 +564,6 @@ body {
 .bottom-nav-link .nav-link-label {
     position: absolute;
     bottom: 125%;
-    /* Position above the icon */
     left: 50%;
     transform: translateX(-50%) translateY(5px) scale(0.9);
     background-color: var(--text-light);
@@ -594,7 +578,6 @@ body {
     transition: opacity 0.2s ease-out, transform 0.2s ease-out;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     z-index: 10;
-    /* Ensure label is above other elements */
 }
 
 .bottom-nav-link:hover .nav-link-label {
@@ -602,14 +585,12 @@ body {
     transform: translateX(-50%) translateY(0) scale(1);
 }
 
-/* Circular Glow on Hover for each link */
 .bottom-nav-link::after {
     content: '';
     position: absolute;
     top: 50%;
     left: 50%;
     width: 44px;
-    /* Slightly larger than icon container */
     height: 44px;
     border-radius: 50%;
     background: radial-gradient(circle, rgba(var(--primary-blue-rgb), 0.35) 0%, transparent 65%);
@@ -617,7 +598,6 @@ body {
     opacity: 0;
     transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.3s ease-out;
     z-index: 0;
-    /* Behind icon */
 }
 
 .bottom-nav-link:hover::after {
@@ -626,7 +606,6 @@ body {
 }
 
 .bottom-nav-link.active::after {
-    /* Hide individual hover glow if item is active (pill is shown) */
     opacity: 0;
     transform: translate(-50%, -50%) scale(0);
 }
@@ -635,13 +614,18 @@ body {
     background: linear-gradient(45deg, var(--primary-blue), var(--accent-gold-bright));
     box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
     transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    position: absolute;
+    bottom: 0;
+    z-index: 10;
 }
 
 #bottom-main-nav.indicator-visible .nav-indicator {
     opacity: 1;
+    position: absolute;
+    bottom: 0;
+    z-index: 10px;
 }
 
-/* Right Sticky Contact Panel */
 #right-contact-panel {
     position: fixed;
     top: 50%;
@@ -726,7 +710,6 @@ body {
     }
 }
 
-/* Add loading animation */
 #loading-overlay {
     position: fixed;
     top: 0;
@@ -755,20 +738,16 @@ body {
     100% { transform: rotate(360deg); }
 }
 
-/* Performance: Reduce particle effects */
 .particle {
-    /* Reduce glow effect */
     box-shadow: 0 0 5px rgba(100, 150, 255, 0.05);
 }
 
-/* Accessibility: Improve focus states */
 a:focus-visible,
 button:focus-visible {
     outline: 2px solid var(--accent-gold-bright, #ffd700);
     outline-offset: 2px;
 }
 
-/* Mobile: Adjust navigation for small screens */
 @media (max-width: 480px) {
     #bottom-main-nav {
         left: 10px;
@@ -788,124 +767,6 @@ button:focus-visible {
     }
 }
 
-/* Mobile-first adjustments for max-width 600px */
-@media (max-width: 600px) {
-    html, body {
-        font-size: 1.08rem;
-        min-width: 0;
-        overflow-x: hidden;
-        scroll-behavior: smooth;
-    }
-    #main-content-display {
-        padding-top: 0.5rem;
-        padding-bottom: 70px;
-        height: auto;
-        overflow-y: visible;
-        overflow-x: hidden;
-    }
-    .carousel-slide {
-        padding: 0.7rem 0.3rem;
-        min-height: unset;
-        font-size: 1.08rem;
-        overflow-y: visible;
-        transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .carousel-slide.active-slide {
-        opacity: 1;
-        transform: translateY(0);
-        transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .phase2-header h1 {
-        font-size: 1.35rem;
-        flex-wrap: wrap;
-    }
-    .phase2-header .education-text {
-        font-size: 0.95rem;
-    }
-    .section-title {
-        font-size: 1.1rem;
-        margin-bottom: 1rem;
-        padding-bottom: 0.5rem;
-    }
-    .card-container, .card-container-grid {
-        padding: 0 0.2rem 1rem 0.2rem;
-        gap: 0.7rem;
-    }
-    .achievement-card, .skill-card {
-        padding: 0.7rem 0.5rem;
-        font-size: 1.02rem;
-        transition: box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .card-title {
-        font-size: 1.12rem;
-    }
-    .card-subtitle {
-        font-size: 0.88rem;
-    }
-    .motivation-text {
-        font-size: 1.01rem;
-    }
-    #bottom-main-nav {
-        left: 0;
-        right: 0;
-        bottom: 0;
-        height: 40px;
-        border-radius: 0;
-        padding: 0 2px;
-        min-width: 0;
-        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .bottom-nav-link {
-        width: 32px;
-        height: 32px;
-        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .bottom-nav-link .nav-link-label {
-        font-size: 0.7rem;
-        padding: 2px 4px;
-    }
-    #right-contact-panel {
-        position: fixed;
-        top: 50%;
-        right: 0;
-        left: unset;
-        width: 48px;
-        height: auto;
-        flex-direction: column;
-        justify-content: flex-start;
-        border-radius: 25px 0 0 25px;
-        box-shadow: none;
-        padding: 0.5rem 0;
-        gap: 1.2rem;
-        background: rgba(10, 15, 31, 0.98);
-        transform: translateY(-50%);
-        z-index: 1200;
-        transition: right 0.5s cubic-bezier(0.4, 0, 0.2, 1), top 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .contact-panel-icon {
-        font-size: 1.5rem;
-        transition: color 0.4s cubic-bezier(0.4, 0, 0.2, 1), transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    #aw-logo {
-        top: 0.5rem;
-        left: 0.5rem;
-        font-size: 1.2rem;
-    }
-    #loading-overlay {
-        font-size: 0.9rem;
-    }
-    #phase2-content-wrapper {
-        overflow-y: auto;
-        max-height: 100vh;
-    }
-    /* Smoother transitions for summary words */
-    .summary-word {
-        transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-}
-/* ...existing code... */
-
-/* Visual: Refine card hover effects */
 .achievement-card:hover,
 .skill-card:hover {
     transform: translateY(-5px) scale(1.01);
@@ -914,7 +775,6 @@ button:focus-visible {
         0 0 25px rgba(59, 130, 246, 0.3);
 }
 
-/* Typography: Improve readability */
 .card-details {
     font-size: 1.05rem;
     line-height: 1.75;
@@ -925,7 +785,6 @@ button:focus-visible {
     line-height: 1.8;
 }
 
-/* Scrollbar: Make more subtle */
 .carousel-slide::-webkit-scrollbar-thumb {
     background: linear-gradient(45deg, var(--primary-blue, #3b82f6), var(--primary-red, #ef4444));
     animation: none;
@@ -1024,7 +883,6 @@ button:focus-visible {
     }
 }
 
-/* Card Containers */
 .card-container {
     width: 100%;
     max-width: 900px;
@@ -1042,7 +900,6 @@ button:focus-visible {
     gap: 1.5rem;
 }
 
-/* Base Achievement Card Styling */
 .achievement-card,
 .skill-card {
     background: var(--card-bg);
@@ -1169,7 +1026,6 @@ button:focus-visible {
     transform: scale(1.02);
 }
 
-/* Responsive Improvements */
 @media (max-width: 768px) {
     .section-title {
         font-size: 2rem;
@@ -1192,8 +1048,12 @@ button:focus-visible {
     .carousel-slide {
         padding: 1.5rem;
     }
-
-    #main-content-display {
-        padding-bottom: 100px;
+    #aw-logo{
+        opacity: 0 !important;
+        visibility: hidden;
+    }
+    .intro-sentence{
+        width: 100vw;
+        padding: 0%;
     }
 }
