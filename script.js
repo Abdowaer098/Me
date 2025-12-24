@@ -42,23 +42,31 @@ document.addEventListener("DOMContentLoaded", function () {
   const initialIntroText = "Curious? 🤔✨";
   const hoverIntroText = "Go deeper 💡🚀";
 
+  // UPDATED SUMMARY TEXT
   const summaryFullText =
-    "Cybersecurity specialist and web developer with expertise in penetration testing, IoT security, and ethical hacking. Experienced in Red Teaming, vulnerability assessment, CTFs and bug bounty programs, with a strong foundation in network security, Linux administration, and security automation. Skilled in .NET web development and security-focused programming. Passionate about securing digital infrastructures and continuously improving security measures.";
+    "CPTE-certified Penetration Tester and Red Team specialist with expertise in gray-box assessments, AI-driven security automation, and secure software development. Proven track record of identifying critical vulnerabilities like IDOR, SSRF, SQLi, and RCE through manual exploitation and static code analysis. Experienced in leading technical teams, securing IoT infrastructures, and conducting forensic analysis. Actively preparing for OSCP with a strong focus on Active Directory attacks and advanced web exploitation.";
+  
+  // UPDATED KEYWORDS FOR HIGHLIGHTING
   const summaryKeywords = [
-    "Cybersecurity specialist",
-    "web developer",
-    "penetration testing",
-    "IoT security",
-    "ethical hacking",
-    "Red Teaming",
-    "vulnerability assessment",
-    "CTFs",
-    "bug bounty programs",
-    "network security",
-    "Linux administration",
-    "security automation",
-    ".NET web development",
-    "security-focused programming",
+    "CPTE-certified",
+    "Penetration Tester",
+    "Red Team specialist",
+    "gray-box assessments",
+    "AI-driven security automation",
+    "secure software development",
+    "critical vulnerabilities",
+    "IDOR",
+    "SSRF",
+    "SQLi",
+    "RCE",
+    "manual exploitation",
+    "static code analysis",
+    "leading technical teams",
+    "IoT infrastructures",
+    "forensic analysis",
+    "OSCP",
+    "Active Directory attacks",
+    "advanced web exploitation",
   ];
 
   if (introTextSpan) {
