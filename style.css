@@ -352,6 +352,7 @@ body {
 .nav-indicator {
     position: absolute;
     bottom: 5px;
+    left: 0; /* Added: Important for transform calculations */
     height: 4px;
     width: 4px;
     background: var(--accent-gold-bright);
@@ -461,6 +462,18 @@ body {
     animation: spin 1s linear infinite;
 }
 @keyframes spin { 100% { transform: rotate(360deg); } }
+
+/* --- REQUIRED ANIMATIONS --- */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
 /* --- Mobile Responsiveness --- */
 @media (max-width: 768px) {
