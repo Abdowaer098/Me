@@ -12,10 +12,9 @@
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
     <link rel="stylesheet" href="style.css">
 
+    <!-- Add preconnect for external resources -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" href="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" as="script">
-    <link rel="preload" href="style.css" as="style">
 </head>
 
 <body class="antialiased">
@@ -26,24 +25,15 @@
 
     <div id="particle-bg" data-particle-count="25"></div>
 
-    <div id="monogram-container">
-        <div id="monogram-interaction-area">
-            <span id="initial-w-char">W</span>
-            <div id="intro-text-container">
-                <span class="intro-gradient-text">Curious? 🤔✨</span>
-            </div>
-        </div>
-    </div>
+    <!-- Main Logo (Always Visible) -->
+    <div id="aw-logo" class="visible">AW</div>
 
-    <div id="artifact-sentence" class="intro-sentence">"Imagine a programmer who treats their work as a precious
-        artifact, safeguarding it with the vigilance of a digital sentinel."</div>
-    <div id="waer-reveal-text" class="intro-sentence">WAER.</div>
-
-    <div id="aw-logo">AW</div>
-
-    <div id="phase2-content-wrapper">
+    <!-- Main Content Wrapper (Always Visible) -->
+    <div id="phase2-content-wrapper" class="visible">
         <div id="main-content-display">
             <div class="carousel-track">
+                
+                <!-- SUMMARY SECTION -->
                 <section id="summary-section" class="carousel-slide active-slide">
                     <header class="phase2-header">
                         <h1>
@@ -55,9 +45,11 @@
                             2024 – Expected Graduation: 2027</p>
                     </header>
                     <main id="professional-summary-text" class="phase2-summary">
-                        </main>
+                        <!-- Content injected via script.js -->
+                    </main>
                 </section>
 
+                <!-- EXPERIENCE SECTION -->
                 <section id="experience-section" class="carousel-slide">
                     <h2 class="section-title">Work Experience</h2>
                     <div class="card-container">
@@ -105,6 +97,7 @@
                     </div>
                 </section>
 
+                <!-- PROJECTS SECTION -->
                 <section id="projects-section" class="carousel-slide">
                     <h2 class="section-title">Projects</h2>
                     <div class="card-container">
@@ -136,6 +129,7 @@
                     </div>
                 </section>
 
+                <!-- SKILLS SECTION -->
                 <section id="skills-section" class="carousel-slide">
                     <h2 class="section-title">Skills & Expertise</h2>
                     <div class="card-container-grid">
@@ -174,6 +168,7 @@
                     </div>
                 </section>
 
+                <!-- EDUCATION SECTION -->
                 <section id="education-certs-section" class="carousel-slide">
                     <h2 class="section-title">Education & Certifications</h2>
                     <div class="card-container">
@@ -192,6 +187,7 @@
                     </div>
                 </section>
 
+                <!-- ACTIVITIES SECTION -->
                 <section id="activities-section" class="carousel-slide">
                     <h2 class="section-title">Competitions & Rankings</h2>
                     <div class="card-container">
@@ -215,6 +211,7 @@
                     </div>
                 </section>
 
+                <!-- GOALS SECTION -->
                 <section id="goals-learning-section" class="carousel-slide">
                     <h2 class="section-title">Focus & Motivation</h2>
                     <div class="card-container">
@@ -238,6 +235,7 @@
             </div>
         </div>
 
+        <!-- Navigation -->
         <nav id="bottom-main-nav">
             <div class="bottom-nav-links">
                 <a href="#summary-section" data-index="0" class="bottom-nav-link active">
@@ -272,6 +270,7 @@
             <div class="nav-indicator"></div>
         </nav>
 
+        <!-- Right Contact Panel -->
         <aside id="right-contact-panel" aria-label="Contact links">
             <a href="https://linkedin.com/in/wa3r" target="_blank" rel="noopener noreferrer"
                 class="contact-panel-icon" aria-label="Connect on LinkedIn">
