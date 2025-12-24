@@ -8,39 +8,81 @@
     --accent-gold: #D4AF37;
     --accent-gold-bright: #FFD700;
     
-    /* RGB values for transparencies */
-    --primary-blue-rgb: 59, 130, 246;
-    --card-bg: rgba(17, 24, 39, 0.6);
-    --card-border: rgba(255, 255, 255, 0.08);
-    --card-hover-border: rgba(59, 130, 246, 0.5);
-    
     /* Effects */
     --nav-bg: rgba(5, 8, 13, 0.85);
     --nav-blur: 16px;
-    --card-blur: 12px;
-    --shadow-soft: 0 10px 40px -10px rgba(0,0,0,0.5);
+    --card-bg: rgba(17, 24, 39, 0.6);
+    --card-border: rgba(255, 255, 255, 0.08);
+    --card-hover-border: rgba(59, 130, 246, 0.5);
     --shadow-glow: 0 0 20px rgba(59, 130, 246, 0.15);
 }
 
-/* --- Global Reset & Body --- */
-*, *::before, *::after {
-    box-sizing: border-box;
-}
+/* --- Global Reset --- */
+*, *::before, *::after { box-sizing: border-box; }
 
 body {
     font-family: 'Inter', sans-serif;
     background-color: var(--dark-bg);
     background-image: radial-gradient(circle at 50% 0%, #111827 0%, var(--dark-bg) 60%);
     color: var(--text-light);
-    overflow: hidden;
     margin: 0;
     display: flex;
     min-height: 100vh;
+    overflow: hidden;
 }
 
-/* --- Main Interface --- */
+/* --- Loading Overlay (CSS Fallback) --- */
+#loading-overlay {
+    position: fixed;
+    inset: 0;
+    background: #000;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s, visibility 0.5s;
+    /* Safety: Auto-hide after 3s if JS fails */
+    animation: autoHideOverlay 0.5s ease-out 3s forwards;
+    pointer-events: none; /* Allows clicking through if it gets stuck visible */
+}
 
-/* Logo */
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(255,255,255,0.1);
+    border-top-color: var(--primary-blue);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin { 100% { transform: rotate(360deg); } }
+@keyframes autoHideOverlay { to { opacity: 0; visibility: hidden; } }
+
+/* --- Particles --- */
+#particle-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.particle {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.3;
+    animation: floatParticle 20s linear infinite;
+}
+
+@keyframes floatParticle {
+    0% { transform: translate(0, 0); opacity: 0; }
+    50% { opacity: 0.5; }
+    100% { transform: translate(100px, 100px); opacity: 0; }
+}
+
+/* --- Logo --- */
 #aw-logo {
     position: fixed;
     top: 25px;
@@ -50,15 +92,12 @@ body {
     font-weight: 700;
     font-size: 1.8rem;
     color: var(--text-light);
-    opacity: 1; /* Visible by default */
-    visibility: visible;
     text-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
 }
 
-/* Content Wrapper */
+/* --- Main Content Layout --- */
 #phase2-content-wrapper {
     display: flex;
-    opacity: 1; /* Visible by default */
     width: 100%;
     height: 100vh;
     flex-direction: column;
@@ -71,7 +110,6 @@ body {
     overflow: hidden;
 }
 
-/* Carousel Logic */
 .carousel-track {
     display: flex;
     height: 100%;
@@ -85,11 +123,11 @@ body {
     height: 100%;
     overflow-y: auto;
     overflow-x: hidden;
-    padding: 80px 20px 120px 20px;
+    padding: 80px 20px 120px 20px; /* Space for logo/nav */
     display: flex;
     flex-direction: column;
     align-items: center;
-    opacity: 0;
+    opacity: 0; /* Hidden by default */
     transform: scale(0.95);
     transition: opacity 0.5s ease, transform 0.5s ease;
 }
@@ -99,36 +137,23 @@ body {
     transform: scale(1);
 }
 
-/* Custom Scrollbar for Slides */
-.carousel-slide::-webkit-scrollbar { width: 6px; }
-.carousel-slide::-webkit-scrollbar-track { background: transparent; }
-.carousel-slide::-webkit-scrollbar-thumb {
-    background: rgba(59, 130, 246, 0.3);
-    border-radius: 10px;
-}
-.carousel-slide::-webkit-scrollbar-thumb:hover { background: var(--primary-blue); }
-
-/* --- Typography & Headings --- */
+/* --- Typography --- */
 .phase2-header {
     text-align: center;
     margin-bottom: 3rem;
-    position: relative;
-    z-index: 2;
 }
 
 .phase2-header h1 {
-    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-size: clamp(2.5rem, 6vw, 4rem);
     font-weight: 800;
     margin: 0;
     line-height: 1.1;
-    letter-spacing: -0.02em;
 }
 
 .gradient-name {
     background: linear-gradient(135deg, #fff 30%, var(--primary-blue));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.3));
 }
 
 .waer-w { color: var(--accent-gold-bright); }
@@ -136,11 +161,7 @@ body {
 .education-text {
     margin-top: 1rem;
     color: var(--text-muted);
-    font-size: clamp(0.9rem, 1.5vw, 1.1rem);
-    letter-spacing: 0.05em;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
+    font-size: 1.1rem;
 }
 
 .phase2-summary {
@@ -151,14 +172,12 @@ body {
     color: #e5e7eb;
 }
 
-/* Summary Word Animation */
 .summary-word {
     display: inline-block;
     margin-right: 4px;
-    opacity: 0;
-    transform: translateY(10px);
-    transition: all 0.3s ease;
+    opacity: 0; /* JS handles fade in */
 }
+
 .summary-word.highlight {
     color: var(--accent-gold-bright);
     font-weight: 600;
@@ -166,15 +185,14 @@ body {
 }
 
 .section-title {
-    font-size: clamp(2rem, 4vw, 3rem);
+    font-size: 2.5rem;
     font-family: 'Orbitron', sans-serif;
     font-weight: 700;
     text-align: center;
     margin-bottom: 2.5rem;
-    color: transparent;
     background: linear-gradient(to right, var(--primary-blue), #fff);
     -webkit-background-clip: text;
-    background-clip: text;
+    -webkit-text-fill-color: transparent;
     position: relative;
     display: inline-block;
 }
@@ -187,10 +205,9 @@ body {
     background: var(--accent-gold);
     margin: 5px auto 0;
     border-radius: 2px;
-    box-shadow: 0 0 10px var(--accent-gold);
 }
 
-/* --- Cards (Glassmorphism) --- */
+/* --- Cards --- */
 .card-container {
     width: 100%;
     max-width: 900px;
@@ -210,21 +227,20 @@ body {
 .achievement-card, .skill-card {
     background: var(--card-bg);
     border: 1px solid var(--card-border);
-    backdrop-filter: blur(var(--card-blur));
-    -webkit-backdrop-filter: blur(var(--card-blur));
+    backdrop-filter: blur(var(--nav-blur));
     border-radius: 16px;
     padding: 2rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     position: relative;
     overflow: hidden;
-    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
 .achievement-card:hover, .skill-card:hover {
     transform: translateY(-5px);
     border-color: var(--card-hover-border);
     background: rgba(17, 24, 39, 0.8);
-    box-shadow: var(--shadow-glow), var(--shadow-soft);
+    box-shadow: var(--shadow-glow);
 }
 
 .achievement-card::before {
@@ -255,7 +271,7 @@ body {
     color: var(--primary-blue);
     text-transform: uppercase;
     letter-spacing: 1px;
-    margin-bottom: 1.2rem;
+    margin-bottom: 1rem;
     font-weight: 600;
 }
 
@@ -263,7 +279,6 @@ body {
     list-style: none;
     padding: 0;
     margin: 0;
-    font-size: 0.95rem;
     color: #d1d5db;
     line-height: 1.6;
 }
@@ -281,24 +296,7 @@ body {
     color: var(--accent-gold);
 }
 
-.skill-card { text-align: center; }
-.skill-card .card-title { justify-content: center; color: var(--accent-gold-bright); }
-.skill-card .card-details li { padding-left: 0; }
-.skill-card .card-details li::before { content: none; }
-
-.achievement-card.large-card {
-    text-align: center;
-    border-color: var(--accent-gold);
-    background: radial-gradient(circle at center, rgba(212, 175, 55, 0.05), transparent);
-}
-.motivation-text {
-    font-size: 1.2rem;
-    font-style: italic;
-    color: #fff;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-}
-
-/* --- Bottom Navigation --- */
+/* --- Bottom Nav --- */
 #bottom-main-nav {
     position: fixed;
     bottom: 30px;
@@ -307,7 +305,6 @@ body {
     height: 60px;
     background: var(--nav-bg);
     backdrop-filter: blur(var(--nav-blur));
-    -webkit-backdrop-filter: blur(var(--nav-blur));
     border: 1px solid var(--card-border);
     border-radius: 30px;
     display: flex;
@@ -315,8 +312,7 @@ body {
     justify-content: center;
     padding: 0 10px;
     z-index: 1000;
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
-    opacity: 1; /* Visible by default */
+    box-shadow: 0 10px 25px -5px rgba(0,0,0,0.5);
     max-width: 90vw;
 }
 
@@ -329,13 +325,11 @@ body {
 .bottom-nav-link {
     width: 45px;
     height: 45px;
-    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     text-decoration: none;
     position: relative;
-    transition: all 0.3s ease;
 }
 
 .bottom-nav-link .nav-icon {
@@ -346,13 +340,16 @@ body {
     z-index: 2;
 }
 
-.bottom-nav-link:hover .nav-icon { color: #fff; transform: scale(1.1); }
-.bottom-nav-link.active .nav-icon { color: #fff; }
+.bottom-nav-link.active .nav-icon,
+.bottom-nav-link:hover .nav-icon {
+    color: #fff;
+    transform: scale(1.1);
+}
 
 .nav-indicator {
     position: absolute;
     bottom: 5px;
-    left: 0; /* Added: Important for transform calculations */
+    left: 0;
     height: 4px;
     width: 4px;
     background: var(--accent-gold-bright);
@@ -360,15 +357,15 @@ body {
     box-shadow: 0 0 10px var(--accent-gold-bright);
     transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
     z-index: 5;
-    pointer-events: none;
+    opacity: 0; /* JS sets to 1 */
 }
 
 .nav-link-label {
     position: absolute;
-    bottom: 60px;
+    bottom: 55px;
     left: 50%;
     transform: translateX(-50%) scale(0.8);
-    background: rgba(0,0,0,0.8);
+    background: rgba(0,0,0,0.9);
     color: #fff;
     padding: 4px 8px;
     border-radius: 4px;
@@ -379,6 +376,7 @@ body {
     white-space: nowrap;
     border: 1px solid var(--card-border);
 }
+
 .bottom-nav-link:hover .nav-link-label {
     opacity: 1;
     transform: translateX(-50%) scale(1);
@@ -393,7 +391,6 @@ body {
     flex-direction: column;
     gap: 15px;
     z-index: 900;
-    opacity: 1; /* Visible by default */
 }
 
 .contact-panel-icon {
@@ -416,54 +413,7 @@ body {
     transform: scale(1.1);
 }
 
-/* --- Particles --- */
-#particle-bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    pointer-events: none;
-}
-
-.particle {
-    position: absolute;
-    background: white;
-    border-radius: 50%;
-    opacity: 0;
-    will-change: transform, opacity;
-    animation: floatParticle linear infinite;
-}
-
-@keyframes floatParticle {
-    0% { transform: translate(0, 0); opacity: 0; }
-    20% { opacity: 0.3; }
-    80% { opacity: 0.3; }
-    100% { transform: translate(var(--moveX), var(--moveY)); opacity: 0; }
-}
-
-/* --- Loading Overlay --- */
-#loading-overlay {
-    position: fixed;
-    inset: 0;
-    background: #000;
-    z-index: 9999;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.loading-spinner {
-    width: 40px;
-    height: 40px;
-    border: 3px solid rgba(255,255,255,0.1);
-    border-top-color: var(--primary-blue);
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-}
-@keyframes spin { 100% { transform: rotate(360deg); } }
-
-/* --- REQUIRED ANIMATIONS --- */
+/* --- ANIMATIONS (Crucial for Visibility) --- */
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -475,40 +425,23 @@ body {
     }
 }
 
-/* --- Mobile Responsiveness --- */
+/* --- Mobile --- */
 @media (max-width: 768px) {
-    #aw-logo {
-        top: 20px;
-        left: 20px;
-        font-size: 1.4rem;
-    }
-
-    .carousel-slide {
-        padding: 70px 15px 100px 15px;
-    }
-
+    #aw-logo { top: 20px; left: 20px; font-size: 1.4rem; }
+    .carousel-slide { padding: 70px 15px 100px 15px; }
     .section-title { font-size: 1.8rem; }
     .phase2-header h1 { font-size: 2.5rem; }
-
-    .card-container-grid {
-        grid-template-columns: 1fr;
-    }
-
-    #bottom-main-nav {
-        height: 50px;
-        bottom: 20px;
-        padding: 0 5px;
-    }
+    .card-container-grid { grid-template-columns: 1fr; }
     
+    #bottom-main-nav { height: 50px; bottom: 20px; padding: 0 5px; }
     .bottom-nav-link { width: 35px; height: 35px; }
     .bottom-nav-link .nav-icon { width: 18px; height: 18px; }
-
+    
     #right-contact-panel {
         flex-direction: row;
         bottom: auto;
         top: 25px;
         right: 20px;
     }
-    
     .contact-panel-icon { width: 32px; height: 32px; }
 }
