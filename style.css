@@ -1,6 +1,6 @@
 :root {
     /* Colors */
-    --dark-bg: #050507; /* Slightly off-black for depth */
+    --dark-bg: #050507;
     --primary-blue: #3B82F6;
     --primary-red: #EF4444;
     --text-light: #F3F4F6;
@@ -30,151 +30,12 @@
 body {
     font-family: 'Inter', sans-serif;
     background-color: var(--dark-bg);
-    /* Subtle background gradient for depth */
     background-image: radial-gradient(circle at 50% 0%, #111827 0%, var(--dark-bg) 60%);
     color: var(--text-light);
-    overflow: hidden; /* Main scroll handled by carousel */
+    overflow: hidden;
     margin: 0;
     display: flex;
     min-height: 100vh;
-}
-
-/* --- Monogram Intro Section --- */
-#monogram-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 2000;
-    background-color: var(--dark-bg);
-    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
-}
-
-#monogram-container.hidden {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-}
-
-#monogram-interaction-area {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    cursor: pointer;
-    transform: scale(1);
-    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-#monogram-interaction-area:active {
-    transform: scale(0.95);
-}
-
-#initial-w-char {
-    font-family: 'Orbitron', sans-serif;
-    font-weight: 900;
-    font-size: clamp(120px, 20vw, 250px);
-    color: var(--accent-gold);
-    line-height: 0.8;
-    display: block;
-    opacity: 0;
-    transform: scale(0.8);
-    animation: fadeInW 0.7s ease-out 0.3s forwards, pulseW 3s infinite ease-in-out 1.2s;
-    text-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
-    will-change: transform, opacity, text-shadow;
-}
-
-#initial-w-char.enlarge-effect {
-    animation: enlargeWOnClick 0.8s cubic-bezier(0.7, 0, 0.3, 1) forwards;
-}
-
-/* Intro Animations */
-@keyframes fadeInW {
-    to { opacity: 1; transform: scale(1); }
-}
-
-@keyframes pulseW {
-    0%, 100% {
-        text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
-        transform: scale(1);
-    }
-    50% {
-        text-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
-        transform: scale(1.02);
-        color: var(--accent-gold-bright);
-    }
-}
-
-@keyframes enlargeWOnClick {
-    0% { transform: scale(1); opacity: 1; }
-    50% { opacity: 0.8; }
-    100% { transform: scale(15); opacity: 0; }
-}
-
-/* Intro Text underneath W */
-#intro-text-container {
-    margin-top: 20px;
-    padding: 8px 16px;
-    font-size: clamp(1rem, 2vw, 1.4rem);
-    opacity: 0;
-    transition: opacity 0.5s ease;
-    background: rgba(255, 255, 255, 0.03);
-    border-radius: 20px;
-    backdrop-filter: blur(4px);
-}
-
-#monogram-container.text-ready #intro-text-container { opacity: 1; }
-#intro-text-container.hidden { opacity: 0 !important; }
-
-.intro-gradient-text {
-    background: linear-gradient(90deg, var(--primary-blue), #fff, var(--primary-red));
-    background-size: 200% auto;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    font-weight: 600;
-    animation: gradientShine 3s linear infinite;
-}
-
-@keyframes gradientShine {
-    to { background-position: 200% center; }
-}
-
-/* Cinematic Sentence Reveal */
-.intro-sentence {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-family: 'Raleway', sans-serif;
-    font-size: clamp(1.2rem, 3vw, 2rem);
-    text-align: center;
-    width: 90%;
-    max-width: 800px;
-    line-height: 1.5;
-    opacity: 0;
-    visibility: hidden;
-    z-index: 1500;
-    transition: all 0.5s ease;
-    text-shadow: 0 4px 10px black;
-}
-
-.intro-sentence.visible {
-    opacity: 1;
-    visibility: visible;
-    transform: translate(-50%, -50%) scale(1);
-}
-
-#waer-reveal-text {
-    font-family: 'Orbitron', sans-serif;
-    font-size: clamp(3rem, 10vw, 6rem);
-    font-weight: 800;
-    letter-spacing: 0.2em;
-    color: var(--accent-gold-bright);
-    text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
 }
 
 /* --- Main Interface --- */
@@ -189,30 +50,18 @@ body {
     font-weight: 700;
     font-size: 1.8rem;
     color: var(--text-light);
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.8s ease;
-    text-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
-}
-
-#aw-logo.visible {
-    opacity: 1;
+    opacity: 1; /* Visible by default */
     visibility: visible;
+    text-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
 }
 
 /* Content Wrapper */
 #phase2-content-wrapper {
-    display: none;
-    opacity: 0;
+    display: flex;
+    opacity: 1; /* Visible by default */
     width: 100%;
     height: 100vh;
     flex-direction: column;
-    transition: opacity 1s ease;
-}
-
-#phase2-content-wrapper.visible {
-    display: flex;
-    opacity: 1;
 }
 
 #main-content-display {
@@ -232,11 +81,11 @@ body {
 
 .carousel-slide {
     width: 100%;
-    min-width: 100%; /* Important for flex */
+    min-width: 100%;
     height: 100%;
     overflow-y: auto;
     overflow-x: hidden;
-    padding: 80px 20px 120px 20px; /* Top/Bottom padding for nav/logo */
+    padding: 80px 20px 120px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -371,7 +220,6 @@ body {
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
-/* Hover Effect */
 .achievement-card:hover, .skill-card:hover {
     transform: translateY(-5px);
     border-color: var(--card-hover-border);
@@ -379,7 +227,6 @@ body {
     box-shadow: var(--shadow-glow), var(--shadow-soft);
 }
 
-/* Card Glow Accent */
 .achievement-card::before {
     content: '';
     position: absolute;
@@ -434,13 +281,11 @@ body {
     color: var(--accent-gold);
 }
 
-/* Specific Card Styling */
 .skill-card { text-align: center; }
 .skill-card .card-title { justify-content: center; color: var(--accent-gold-bright); }
 .skill-card .card-details li { padding-left: 0; }
 .skill-card .card-details li::before { content: none; }
 
-/* Large Motivation Card */
 .achievement-card.large-card {
     text-align: center;
     border-color: var(--accent-gold);
@@ -458,7 +303,7 @@ body {
     position: fixed;
     bottom: 30px;
     left: 50%;
-    transform: translateX(-50%) translateY(20px);
+    transform: translateX(-50%);
     height: 60px;
     background: var(--nav-bg);
     backdrop-filter: blur(var(--nav-blur));
@@ -471,14 +316,8 @@ body {
     padding: 0 10px;
     z-index: 1000;
     box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
-    opacity: 0;
-    transition: all 0.5s ease;
+    opacity: 1; /* Visible by default */
     max-width: 90vw;
-}
-
-#phase2-content-wrapper.visible #bottom-main-nav {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
 }
 
 .bottom-nav-links {
@@ -510,10 +349,9 @@ body {
 .bottom-nav-link:hover .nav-icon { color: #fff; transform: scale(1.1); }
 .bottom-nav-link.active .nav-icon { color: #fff; }
 
-/* Active Indicator Bubble */
 .nav-indicator {
     position: absolute;
-    bottom: 5px; /* Adjust based on design */
+    bottom: 5px;
     height: 4px;
     width: 4px;
     background: var(--accent-gold-bright);
@@ -524,7 +362,6 @@ body {
     pointer-events: none;
 }
 
-/* Tooltip */
 .nav-link-label {
     position: absolute;
     bottom: 60px;
@@ -555,14 +392,7 @@ body {
     flex-direction: column;
     gap: 15px;
     z-index: 900;
-    opacity: 0;
-    transform: translateX(20px);
-    transition: all 0.5s ease 0.5s;
-}
-
-#phase2-content-wrapper.visible #right-contact-panel {
-    opacity: 1;
-    transform: translateX(0);
+    opacity: 1; /* Visible by default */
 }
 
 .contact-panel-icon {
@@ -638,7 +468,6 @@ body {
         top: 20px;
         left: 20px;
         font-size: 1.4rem;
-        /* Kept visible but smaller */
     }
 
     .carousel-slide {
@@ -649,7 +478,7 @@ body {
     .phase2-header h1 { font-size: 2.5rem; }
 
     .card-container-grid {
-        grid-template-columns: 1fr; /* Stack grid on mobile */
+        grid-template-columns: 1fr;
     }
 
     #bottom-main-nav {
@@ -664,18 +493,9 @@ body {
     #right-contact-panel {
         flex-direction: row;
         bottom: auto;
-        top: 20px;
-        right: 20px;
-        transform: none; /* Reset vertical alignment for top placement */
-    }
-    
-    /* Move contact icons to top right on mobile to avoid cluttering bottom */
-    #right-contact-panel {
         top: 25px;
         right: 20px;
-        bottom: unset;
     }
     
     .contact-panel-icon { width: 32px; height: 32px; }
-    .contact-panel-icon svg { width: 16px; height: 16px; }
 }
