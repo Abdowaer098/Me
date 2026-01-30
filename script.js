@@ -22,20 +22,20 @@ document.addEventListener("DOMContentLoaded", function () {
     const bottomNav = document.getElementById("bottom-main-nav");
     const bottomNavLinks = document.querySelectorAll("#bottom-main-nav .bottom-nav-link");
     const navIndicator = document.querySelector("#bottom-main-nav .nav-indicator");
-    
+
     let currentSlide = 0;
     let introSequenceCompleted = false;
     const initialIntroText = "Curious? 🤔✨";
     const hoverIntroText = "Click to Enter 🚀"; // Changed text to be clearer
 
     // --- DATA: Summary & Keywords ---
-    const summaryFullText = "CPTE-certified Penetration Tester and Red Team specialist with expertise in gray-box assessments, AI-driven security automation, and secure software development. Proven track record of identifying critical vulnerabilities like IDOR, SSRF, SQLi, and RCE through manual exploitation and static code analysis. Experienced in leading technical teams, securing IoT infrastructures, and conducting forensic analysis. Actively preparing for OSCP with a strong focus on Active Directory attacks and advanced web exploitation.";
-    
+    const summaryFullText = "I break into systems so the bad guys can't. As a CPTE-certified Penetration Tester and Red Team operator, I specialize in uncovering what others miss — from IDOR and SSRF to SQLi and RCE vulnerabilities. I combine manual exploitation with AI-driven automation to deliver comprehensive security assessments. Whether it's hunting bugs on HackerOne, teaching the next generation of hackers, or preparing for my OSCP with Active Directory mastery, I'm always sharpening my blade. Let's make the digital world a safer place, one vulnerability at a time.";
+
     const summaryKeywords = [
-        "CPTE-certified", "Penetration Tester", "Red Team", "gray-box",
-        "AI-driven", "secure software", "IDOR", "SSRF", "SQLi", "RCE",
-        "manual exploitation", "static code analysis", "IoT", "forensic",
-        "OSCP", "Active Directory", "web exploitation"
+        "break into systems", "CPTE-certified", "Penetration Tester", "Red Team",
+        "IDOR", "SSRF", "SQLi", "RCE", "AI-driven", "manual exploitation",
+        "security assessments", "HackerOne", "OSCP", "Active Directory",
+        "sharpening my blade", "safer place"
     ];
 
     // --- INITIALIZATION ---
@@ -48,9 +48,27 @@ document.addEventListener("DOMContentLoaded", function () {
         window.addEventListener("load", () => {
             setTimeout(() => {
                 loadingOverlay.style.opacity = "0";
-                setTimeout(() => { loadingOverlay.style.visibility = "hidden"; }, 500);
-            }, 500);
+                setTimeout(() => {
+                    loadingOverlay.style.visibility = "hidden";
+
+                    // Trigger summary animation and carousel setup after loading
+                    animateProfessionalSummary();
+                    staggerChildrenAnimation(carouselSlides[0]);
+                    updateCarouselControls();
+
+                    // Make nav indicator visible
+                    if (navIndicator) navIndicator.style.opacity = "1";
+                }, 500);
+            }, 300);
         });
+    } else {
+        // Fallback if loading overlay doesn't exist
+        setTimeout(() => {
+            animateProfessionalSummary();
+            staggerChildrenAnimation(carouselSlides[0]);
+            updateCarouselControls();
+            if (navIndicator) navIndicator.style.opacity = "1";
+        }, 100);
     }
 
     // --- PARTICLE BACKGROUND ---
@@ -63,15 +81,15 @@ document.addEventListener("DOMContentLoaded", function () {
             let size = Math.random() * 3 + 1;
             particle.style.width = `${size}px`;
             particle.style.height = `${size}px`;
-            
+
             // Randomize position
             particle.style.left = `${Math.random() * 100}%`;
             particle.style.top = `${Math.random() * 100}%`;
-            
+
             // CSS Variable for movement
             particle.style.setProperty("--moveX", `${(Math.random() - 0.5) * 200}px`);
             particle.style.setProperty("--moveY", `${(Math.random() - 0.5) * 200}px`);
-            
+
             particle.style.animationDelay = `${Math.random() * 5}s`;
             particle.style.animationDuration = `${Math.random() * 10 + 10}s`;
             particleBg.appendChild(particle);
@@ -85,7 +103,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // 1. Hide the prompt text
         if (introTextContainer) introTextContainer.style.opacity = '0';
-        
+
         // 2. Animate the W
         if (initialWChar) {
             initialWChar.classList.add("enlarge-effect");
@@ -94,30 +112,30 @@ document.addEventListener("DOMContentLoaded", function () {
         // 3. FORCE PROCEED after 800ms (Fixes the freeze)
         setTimeout(() => {
             if (initialWChar) initialWChar.style.opacity = '0';
-            
+
             // Show Artifact Sentence
             if (artifactSentence) {
                 artifactSentence.classList.add("visible");
-                
+
                 // Hide Sentence, Show Reveal Text
                 setTimeout(() => {
                     artifactSentence.classList.remove("visible");
                     if (waerRevealText) waerRevealText.classList.add("visible");
-                    
+
                     // Final Reveal
                     setTimeout(() => {
                         if (waerRevealText) waerRevealText.classList.remove("visible");
                         if (monogramContainer) monogramContainer.style.display = 'none';
-                        
+
                         // Show Main Content
                         if (awLogo) awLogo.classList.add("visible");
                         if (phase2ContentWrapper) phase2ContentWrapper.classList.add("visible");
 
                         // Trigger animations inside content
                         setTimeout(() => {
-                             animateProfessionalSummary();
-                             staggerChildrenAnimation(carouselSlides[0]);
-                             updateCarouselControls();
+                            animateProfessionalSummary();
+                            staggerChildrenAnimation(carouselSlides[0]);
+                            updateCarouselControls();
                         }, 100);
 
                     }, 2000); // Time reading "WAER."
@@ -129,7 +147,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // --- EVENT LISTENERS ---
     if (monogramInteractionArea) {
         monogramInteractionArea.addEventListener("click", startMainTransitionSequence);
-        
+
         // Hover effects
         monogramInteractionArea.addEventListener("mouseenter", () => {
             if (!introSequenceCompleted && introTextSpan) introTextSpan.innerHTML = hoverIntroText;
@@ -144,41 +162,49 @@ document.addEventListener("DOMContentLoaded", function () {
     function animateProfessionalSummary() {
         if (!professionalSummaryElement) return;
         professionalSummaryElement.innerHTML = "";
-        
+
         const words = summaryFullText.split(" ");
         let wordIndex = 0;
 
         // Simple text injection with highlighting
         const fragment = document.createDocumentFragment();
-        
+
         words.forEach((word) => {
             const span = document.createElement("span");
             span.textContent = word + " ";
             span.classList.add("summary-word");
-            
+
             // Check for keywords
             const cleanWord = word.replace(/[^a-zA-Z0-9-]/g, "");
             const isKeyword = summaryKeywords.some(k => k.includes(cleanWord) || cleanWord.includes(k));
-            
+
             if (isKeyword && cleanWord.length > 2) {
                 span.classList.add("highlight");
             }
 
-            // Animation delay
+            // Animation delay - using CSS custom property for smoother animation
+            span.style.setProperty('--delay', `${wordIndex * 0.03}s`);
             span.style.animationDelay = `${wordIndex * 0.03}s`;
             fragment.appendChild(span);
             wordIndex++;
         });
 
         professionalSummaryElement.appendChild(fragment);
+
+        // Force reflow to trigger animations
+        professionalSummaryElement.offsetHeight;
     }
 
     function staggerChildrenAnimation(parentElement) {
         if (!parentElement) return;
-        const items = parentElement.querySelectorAll("h1, h2, h3, p, li");
+        const items = parentElement.querySelectorAll("h1, h2, h3, p, li, .achievement-card, .skill-card");
         items.forEach((item, index) => {
+            // Reset and animate
             item.style.opacity = "0";
-            item.style.animation = `fadeInUp 0.5s ease forwards ${index * 0.1}s`;
+            item.style.animation = "none";
+            // Force reflow
+            item.offsetHeight;
+            item.style.animation = `fadeInUp 0.5s ease forwards ${index * 0.05}s`;
         });
     }
 
@@ -200,10 +226,30 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function goToSlide(index) {
         if (!carouselTrack) return;
+
+        // Remove active from all slides
+        carouselSlides.forEach((slide, i) => {
+            slide.classList.remove("active-slide");
+        });
+
+        // Move carousel with smooth transition
         carouselTrack.style.transform = `translateX(-${index * 100}%)`;
         currentSlide = index;
+
+        // Add active to current slide
+        if (carouselSlides[index]) {
+            carouselSlides[index].classList.add("active-slide");
+
+            // Scroll the slide content to top smoothly
+            carouselSlides[index].scrollTo({ top: 0, behavior: "smooth" });
+
+            // Animate children of the new slide with slight delay for smoother effect
+            setTimeout(() => {
+                staggerChildrenAnimation(carouselSlides[index]);
+            }, 100);
+        }
+
         updateCarouselControls();
-        window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
     bottomNavLinks.forEach((link) => {
@@ -214,6 +260,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     window.addEventListener("resize", () => {
-         updateCarouselControls();
+        updateCarouselControls();
     });
 });
